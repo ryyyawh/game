@@ -1,26 +1,12 @@
 workflows:
   build-android:
-    name: Build TebakKonyolGame
-    max_build_duration: 60
+    name: Build Android App
+    max_build_duration: 45
     environment:
       java: 17
     scripts:
-      - name: Set permission untuk gradlew
-        script: chmod +x ./gradlew
-
-      - name: Generate local.properties
-        script: echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
-
-      - name: Membersihkan project
-        script: ./gradlew clean
-
-      - name: Build APK release
-        script: ./gradlew assembleRelease
-
+      - echo "Menjalankan build Android..."
+      - echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
+      - ./gradlew assembleRelease
     artifacts:
-      - app/build/outputs/**/*.apk
-
-    publishing:
-      email:
-        recipients:
-          - aulidanraja@gmail.com
+      - build/app/outputs/flutter-apk/app-release.apk
