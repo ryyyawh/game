@@ -7,6 +7,5 @@ workflows:
     scripts:
       - echo "Menjalankan build Android..."
       - echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
-      - ./gradlew assembleRelease
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
